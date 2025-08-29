@@ -1,0 +1,9 @@
+SELECT
+  "group",
+  COUNT(DISTINCT user_id) AS n_users,
+  SUM(conversion) AS conversions,
+  1.0 * SUM(conversion) / COUNT(DISTINCT user_id) AS conversion_rate,
+  1.0 * SUM(revenue) / COUNT(DISTINCT user_id) AS arpu,
+  1.0 * SUM(retained_30d) / COUNT(DISTINCT user_id) AS retention_30d
+FROM df
+GROUP BY "group";
